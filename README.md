@@ -1,8 +1,8 @@
-# tunguska:imgur
+# erictran:goalify
 
-An ES2015 Meteor OAuth handler package for Imgur.
+An ES2015 Meteor OAuth handler package for Goalify.
 
-This is a fully working OAuth handler, allowing you to use Imgur as your Meteor authentication method. If you want to use it "as is" you can just `meteor add tunguska:imgur` to your application.
+This is a fully working OAuth handler, allowing you to use Goalify as your Meteor authentication method. If you want to use it "as is" you can just `meteor add erictran:goalify` to your application.
 
 However, the package has been written to aid in understanding the mechanics of putting together an OAuth handler for any arbitrary provider. The trickier parts of the codebase are (hopefully) annotated well enough to comprehend what's going on in this bit of Meteor Magic, enabling you make a minimum number of changes for your chosen provider.
 
