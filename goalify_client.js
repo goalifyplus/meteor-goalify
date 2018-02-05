@@ -4,7 +4,7 @@
  * Define the base object namespace. By convention we use the service name
  * in PascalCase (aka UpperCamelCase). Note that this is defined as a package global (boilerplate).
  */
-Goalify = {};
+Goalify = Goalify || {};
 
 /**
  * Request Goalify credentials for the user (boilerplate).
@@ -40,6 +40,8 @@ Goalify.requestCredential = function(options, credentialRequestCompleteCallback)
 	 */
 	const credentialToken = Random.secret();
 	const loginStyle = OAuth._loginStyle('goalify', config, options);
+	const state = OAuth._stateParam(loginStyle, credentialToken);
+	Goalify.redirectUri = options.redirectUri;
 
 	/**
 	 * Goalify requires response_type and client_id
@@ -50,8 +52,11 @@ Goalify.requestCredential = function(options, credentialRequestCompleteCallback)
 		'?response_type=code' +
 		'&client_id=' +
 		config.clientId +
+		'&scope=profile' +
+		'&redirect_uri=' +
+		options.redirectUri +
 		'&state=' +
-		OAuth._stateParam(loginStyle, credentialToken);
+		state;
 
 	/**
 	 * Client initiates OAuth login request (boilerplate)
