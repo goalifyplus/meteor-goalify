@@ -41,6 +41,7 @@ Goalify.requestCredential = function(options, credentialRequestCompleteCallback)
 	const credentialToken = Random.secret();
 	const loginStyle = OAuth._loginStyle('goalify', config, options);
 	const state = OAuth._stateParam(loginStyle, credentialToken);
+	const apiHost = config.apiHost || 'https://api.goalify.plus';
 	Goalify.redirectUri = options.redirectUri;
 
 	/**
@@ -48,7 +49,8 @@ Goalify.requestCredential = function(options, credentialRequestCompleteCallback)
 	 * We use state to roundtrip a random token to help protect against CSRF (boilerplate)
 	 */
 	const loginUrl =
-		'https://api.dev.goalify.plus/oauth/request/authorize' +
+		apiHost +
+		'/oauth/request/authorize' +
 		'?response_type=code' +
 		'&client_id=' +
 		config.clientId +

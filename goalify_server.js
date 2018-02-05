@@ -105,7 +105,8 @@ OAuth.registerService('goalify', 2, null, function(query) {
  * @return  {Object}              The response from the token request (see above)
  */
 const getTokens = function(config, query) {
-	const endpoint = 'https://api.dev.goalify.plus/oauth/token';
+	const apiHost = config.apiHost || 'https://api.goalify.plus';
+	const endpoint = apiHost + '/oauth/token';
 
 	/**
 	 * Attempt the exchange of code for token
@@ -163,7 +164,8 @@ const getTokens = function(config, query) {
  * @return  {Object}              The response from the account request (see above)
  */
 const getAccount = function(config, accessToken) {
-	const endpoint = 'https://api.dev.goalify.plus/api/userinfo';
+	const apiHost = config.apiHost || 'https://api.goalify.plus';
+	const endpoint = apiHost + '/api/userinfo';
 	let accountObject;
 
 	/**
