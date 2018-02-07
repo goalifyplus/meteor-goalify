@@ -77,7 +77,7 @@ OAuth.registerService('goalify', 2, null, function(query) {
 		serviceData: serviceData,
 		options: {
 			profile: {
-				name: identity.username, // comes from the token request
+				name: identity.fullname || identity.username, // comes from the token request
 			},
 		},
 	};
