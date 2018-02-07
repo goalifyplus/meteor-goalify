@@ -13,7 +13,7 @@ Goalify.retrieveCredential = (credentialToken, credentialSecret) => {
 	return OAuth.retrieveCredential(credentialToken, credentialSecret);
 };
 
-Goalify.whitelistedFields = ['id', 'email', 'username', 'fullname', 'firstName', 'lastName', 'avatar', 'gender'];
+Goalify.whitelistedFields = ['id', 'email', 'username', 'firstName', 'lastName', 'avatar', 'gender'];
 
 /**
  * Register this service with the underlying OAuth handler
@@ -73,11 +73,12 @@ OAuth.registerService('goalify', 2, null, function(query) {
 	 * Return the serviceData object along with an options object containing
 	 * the initial profile object with the username.
 	 */
+	const fullname = ((identity.firstName || '') + ' ' + (identity.lastName || '')).trim();
 	return {
 		serviceData: serviceData,
 		options: {
 			profile: {
-				name: identity.fullname || identity.username, // comes from the token request
+				name: fullname || identity.username, // comes from the token request
 			},
 		},
 	};
