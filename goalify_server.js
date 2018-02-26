@@ -120,7 +120,7 @@ const getTokens = function(config, query) {
 				client_id: config.clientId,
 				client_secret: OAuth.openSecret(config.secret),
 				grant_type: 'authorization_code',
-				redirect_uri: Goalify.redirectUri || 'http://localhost:3000/_oauth/goalify',
+				redirect_uri: config.redirectUri,
 			},
 		});
 	} catch (err) {

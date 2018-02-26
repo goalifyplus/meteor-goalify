@@ -42,7 +42,6 @@ Goalify.requestCredential = function(options, credentialRequestCompleteCallback)
 	const loginStyle = OAuth._loginStyle('goalify', config, options);
 	const state = OAuth._stateParam(loginStyle, credentialToken);
 	const apiHost = config.apiHost || 'https://api.goalify.plus';
-	Goalify.redirectUri = options.redirectUri;
 
 	/**
 	 * Goalify requires response_type and client_id
@@ -56,7 +55,7 @@ Goalify.requestCredential = function(options, credentialRequestCompleteCallback)
 		config.clientId +
 		'&scope=profile' +
 		'&redirect_uri=' +
-		options.redirectUri +
+		config.redirectUri +
 		'&state=' +
 		state;
 

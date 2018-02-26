@@ -1,6 +1,6 @@
 Package.describe({
 	name: 'erictran:goalify',
-	version: '0.0.4',
+	version: '1.0.0',
 	summary: 'OAuth handler for Goalify',
 	git: 'https://github.com/goalifyplus/meteor-goalify',
 	documentation: 'README.md',
